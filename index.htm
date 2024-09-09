@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sayt.az</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script >
+         tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              'mobile': '300px',
+              'mobilem': '410px',
+              'sm': '640px',
+              'md': '768px',
+              'mdl': '850px',
+              'lg': '1080px',
+              'xl': '1280px',
+              '2xl': '1536px',
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+        input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 15px; 
+  width: 15px; 
+  background-color: #a271f2;
+  border-radius: 50%;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body >
+    
+    <header class="bg-white sticky top-0 w-full z-10 items-center">
+        <nav>
+                <div class="flex justify-between  items-center">
+                    <img src="saytaz.svg" alt="logo" class="max-w-[180px] py-6 px-4	">
+                    <div id="menu" class="hidden lg:flex items-center w-4/5	     justify-between">
+                        <ul class="flex font-semibold justify-between">
+                            <li class="p-2  "><a href="#">Veb Sayt </a><i class="fa-solid fa-chevron-down"></i></li>
+                            <li class="p-2 " ><a href="#">Domen </a><i class="fa-solid fa-chevron-down"></i></li>
+                            <li class="p-2 "><a href="#">Hostinq </a><i class="fa-solid fa-chevron-down"></i></li>
+                            <li class="p-2 "><a href="#">Xidmətlər </a><i class="fa-solid fa-chevron-down"></i></li>
+                            <li class="p-2 "><a href="#">Şirkət </a><i class="fa-solid fa-chevron-down"></i></li>
+                        </ul>
+                        <div class="pr-3 items-center hidden mobile:flex  ">
+                            <div class="relative p-2">
+                                <div class="relative">
+                                    <button id="flagbtn" onclick="selectCur()" class="flex items-center">
+                                        <i class="fa-solid fa-manat-sign mr-2"></i>
+                                        <i class="fa-solid fa-angle-down text-gray-400"></i>
+                                    </button>
+                                    <div id="curpart" class="drop-shadow-md absolute hidden">
+                                        <div class="p-2 cursor-pointer w-12 h-12" onclick="selectCur()">
+                                            <i class="fa-solid fa-manat-sign"></i>
+                                        </div>
+                                        <div class="p-2 cursor-pointer w-10 h-10" onclick="selectCur()">
+                                            <i class="fa-solid fa-dollar-sign"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative p-2">
+                                <div class="relative">
+                                    <button id="flagbtn" onclick="selectFlag()" class="flex items-center">
+                                        <img id="flag-symbol" class="w-6 h-6 mr-2" src="az.png" alt="Flag">
+                                        <i class="fa-solid fa-angle-down text-gray-400"></i>
+                                    </button>
+                                    <div id="flagpart" class="drop-shadow-md absolute hidden">
+                                        <div class="p-2 cursor-pointer w-12 h-12" onclick="selectFlag('az.png')">
+                                            <img class="w-full h-full object-contain" src="az.png">
+                                        </div>
+                                        <div class="p-2 cursor-pointer w-10 h-10" onclick="selectFlag('usa.png')">
+                                            <img class="w-full h-full object-contain" src="usa.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="py-2 px-3 m-2 rounded font-bold text-white bg-gradient-to-r from-purple-500 to-pink-300  "><button ><a href="#" >Qiymət Təklifi Al</a></button></div>
+                            <div class="py-2 px-3 m-2 border border-[#a271f2] text-[#a271f2] rounded"><button><a href="#">Daxil olun</a></button></div>
+                        </div>
+                    </div>
+
+
+                <div  class="flex  items-center lg:hidden 	">
+                    <div class="pr-3  items-center hidden mobile:flex 	">
+                        <div class="relative p-2">
+                            <div class="relative">
+                                <button id="flagbtn" onclick="selectCur()" class="flex items-center ">
+                                    <i class="fa-solid fa-manat-sign"></i>
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </button>
+                                <div id="curpart" class=" drop-shadow-md	absolute hidden ">
+                                    <div class="p-2 cursor-pointer w-12 h-12" onclick="selectCur()">
+                                        <i class="fa-solid fa-manat-sign"></i>
+                                    </div>
+                                    <div class="p-2 cursor-pointer  w-10 h-10" onclick="selectCur()">
+                                        <i class="fa-solid fa-dollar-sign"></i>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="relative p-2">
+                            <div class="relative">
+                                <button id="flagbtn" onclick="selectFlag()" class="flex items-center ">
+                                  <img id="flag-symbol" class="w-6 h-6 mr-2" src="az.png" alt="Flag"> 
+                                  <i class="fa-solid fa-angle-down"></i>
+                                </button>
+                                <div id="flagpart" class=" drop-shadow-md	absolute hidden ">
+                                    <div class="p-2 cursor-pointer w-12 h-12" onclick="selectFlag('az.png')">
+                                      <img class="w-full h-full object-contain" src="az.png" >
+                                    </div>
+                                    <div class="p-2 cursor-pointer  w-10 h-10" onclick="selectFlag('usa.png')">
+                                      <img class="w-full h-full object-contain" src="usa.png">
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                    <i onclick="sideBar() " class="fa-solid fa-bars text-[1.5em] p-2 lg:hidden"></i>
+                </div>
+            </div>
+        </nav>
+        <div id="mobnav" class="fixed hidden top-0 right-0 bg-white overflow-y-auto  mobilem:w-[400px] h-[calc(100vh-60px)] w-full  shadow-lg">
+            <div>
+                <span onclick="sideBar()" class="absolute right-10 top-0 pt-2"><i class="fa-solid fa-x"></i></span>
+                <h3 class="font-bold p-3 m-4 pt-4"><a href="#">Veb Sayt <i class="fa-solid fa-chevron-down"></i></a></h3>
+                <h3 class="font-bold p-3 m-4"><a href="#">Domen <i class="fa-solid fa-chevron-down"></i></a></h3>
+                <h3 class="font-bold p-3 m-4"><a href="#">Hostinq <i class="fa-solid fa-chevron-down"></i></a></h3>
+                <h3 class="font-bold p-3 m-4"><a href="#">Xidmətlər <i class="fa-solid fa-chevron-down"></i></a></h3>
+                <h3 class="font-bold p-3 m-4"><a href="#">Şirkət <i class="fa-solid fa-chevron-down"></i></a></h3>
+                <div class="pr-3 items-center hidden mobile:flex m-4 pt-5">
+                    <div class="relative p-2">
+                        <div class="relative">
+                            <button id="flagbtn" onclick="selectCur()" class="flex items-center">
+                                <i class="fa-solid fa-manat-sign"></i>
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                            <div id="curpart" class="drop-shadow-md absolute hidden">
+                                <div class="p-2 cursor-pointer w-12 h-12" onclick="selectCur()">
+                                    <i class="fa-solid fa-manat-sign"></i>
+                                </div>
+                                <div class="p-2 cursor-pointer w-10 h-10" onclick="selectCur()">
+                                    <i class="fa-solid fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative p-2">
+                        <div class="relative">
+                            <button id="flagbtn" onclick="selectFlag()" class="flex items-center">
+                                <img id="flag-symbol" class="w-6 h-6 mr-2" src="az.png" alt="Flag">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </button>
+                            <div id="flagpart" class="drop-shadow-md absolute hidden">
+                                <div class="p-2 cursor-pointer w-12 h-12" onclick="selectFlag('az.png')">
+                                    <img class="w-full h-full object-contain" src="az.png">
+                                </div>
+                                <div class="p-2 cursor-pointer w-10 h-10" onclick="selectFlag('usa.png')">
+                                    <img class="w-full h-full object-contain" src="usa.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="text-center  items-center	w-full">
+                        <div class="m-auto w-4/5	py-2 my-2 rounded font-bold text-white bg-gradient-to-r from-purple-500 to-pink-300  "><button ><a href="#" >Qiymət Təklifi Al</a></button></div>
+                        <div class="m-auto w-4/5	py-2 my-2 border border-[#a271f2] text-[#a271f2] rounded"><button><a href="#">Daxil olun</a></button></div>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <main class="bg-[#f5f5f5] p-2   ">
+        <div class="lg:relative lg:flex  lg:mx-auto lg:w-4/5			">
+            <div class="bg-white p-3 lg:w-3/5 h-full  ">
+                    <div class="mb-3" >
+                        <h1 class="text-[3em] text-[#1c2434] font-bold p-1 ">Qiymət Təklifi Al</h1>
+                    </div>
+                    <div>
+                        <h3 class=" font-semibold py-3 px-1 text-[1.3em]">Statik Səhifələr</h3>
+                        <div class="p-3 bg-[#f8f8fa]">
+                            <h5 class="text-[1.2em] pl-5 py-5 ">Neçə statik səhifə olacaq?</h5>
+                            <div class="flex  items-center px-4">
+                                <span class="bg-[#a271f2] w-8 h-15 text-center	rounded-lg text-white p-1"><h3>1</h3></span>
+                                <fieldset class="space-y-1 w-full  mx-2">
+                                    <input oninput="calc()" value="1" type="range" id="pages" class="w-full h-2 bg-[#e5e7eb] rounded-full appearance-none" min="1" max="20">
+                                </fieldset>
+                                <span class="bg-[#a271f2] w-8 h-15 text-center	rounded-lg text-white p-1"><h3>20</h3></span>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-[#f8f8fa] lg:flex">
+                            <h5 class="text-[1.2em] pl-5 py-5 ">Dizayn mürəkkəblik:</h5>
+                            <div class="text-[1.5em] items-center px-4">
+                                <div class="flex justify-between text-[0.7em]">
+                                    <h1 class="pl-2">Sade</h1>
+                                    <h1 class="pl-6">Orta</h1>
+                                    <h1>Xüsusi</h1>
+                                </div>
+                                <fieldset class="space-y-1 w-full lg:min-w-[300px] mx-2">
+                                    <input oninput="calc()" id="level" type="range" value="1" class="w-full h-2 bg-[#e5e7eb] rounded-full appearance-none" min="1" max="3">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div  class="bg-[#dee7f2] p-4 rounded-b-md flex justify-between" >
+                            <h5 class="text-[#285a70]" >Xərc:</h5>
+                            <div id="expense">
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold my-4">Veb sayt əlavələri</h3>
+                        <div class="bg-[#f8f8fa] lg:flex lg:w-full lg:mx-auto lg:justify-between	">
+                            <div>                            
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Bloq</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 200)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Üzv girişi /‍‍‍ Profillər</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 400)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Responsive</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 100)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Forum</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 400)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Mesajlaşma</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 50)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Canlı Söhbət</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 50)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Qalereaya</h5>
+                                    <span class="relative inline-block">
+                                        <input  onchange="toggle(this, 100)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                            </div>
+                            <div>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Əlaqə Forması</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 100)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Saytda Axtarış</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 100)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Xəritə Məlumatı / Geolocation</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 100)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Rezervasyon</h5>
+                                    <span class="relative inline-block">
+                                        <input  onchange="toggle(this, 400)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Sosial Media inteqrasiyası</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 50)"   type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Analitika / İzləmə</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 50)"   type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Admin Panel</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggle(this, 300)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <div  class="bg-[#dee7f2] p-4 rounded-b-md flex justify-between lg:w-full lg:mx-auto" >
+                            <h5 class="text-[#285a70]" >Xərc:</h5>
+                            <div id="expenseFunction">
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold my-4">Axtarış motorunun optimallaşdırılması</h3>
+                        <div class="bg-[#f8f8fa] lg:flex lg:w-full ">
+                            <div> 
+                                <div class="flex items-center mb-4 p-2">
+                                    <input onchange="toggleSeo(this,200)" type="checkbox"  class="w-5 h-5 border-gray-200 checked:border-[#a271f3] rounded-full focus:ring-[#a271f3] checked:bg-[#a271f3] indeterminate:bg-gray-300 accent-[#a271f2] hover:shadow-md ">
+                                    <label for="default-checkbox" class="ms-2 text-sm text-gray-700">Başlıqlar & Meta</label>
+                                </div>
+                                <div class="flex items-center mb-4 p-2">
+                                    <input onchange="toggleSeo(this,300)" type="checkbox"  class="w-5 h-5 border-gray-200 checked:border-[#a271f3] rounded-full focus:ring-[#a271f3] checked:bg-[#a271f3] indeterminate:bg-gray-300 accent-[#a271f2] hover:shadow-md ">
+                                    <label for="default-checkbox" class="ms-2 text-sm text-gray-700">Açar Söz</label>
+                                </div>
+                                <div class="flex items-center mb-4 p-2">
+                                    <input onchange="toggleSeo(this,300)" type="checkbox"  class="w-5 h-5 border-gray-200 checked:border-[#a271f3] rounded-full focus:ring-[#a271f3] checked:bg-[#a271f3] indeterminate:bg-gray-300 accent-[#a271f2] hover:shadow-md ">
+                                    <label for="default-checkbox" class="ms-2 text-sm text-gray-700">+20 Qabaqcıl Texnika</label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex items-center mb-4 p-2">
+                                    <input onchange="toggleSeo(this,100)" type="checkbox"  class="w-5 h-5 border-gray-200 checked:border-[#a271f3] rounded-full focus:ring-[#a271f3] checked:bg-[#a271f3] indeterminate:bg-gray-300 accent-[#a271f2] hover:shadow-md ">
+                                    <label for="default-checkbox" class="ms-2 text-sm text-gray-700">Başlıq Teqleri</label>
+                                </div>
+                                <div class="flex items-center  p-2">
+                                    <input onchange="toggleSeo(this,100)" type="checkbox"  class="w-5 h-5 border-gray-200 checked:border-[#a271f3] rounded-full focus:ring-[#a271f3] checked:bg-[#a271f3] indeterminate:bg-gray-300 accent-[#a271f2] hover:shadow-md ">
+                                    <label for="default-checkbox" class="ms-2 text-sm text-gray-700">Sitemap</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="bg-[#dee7f2] p-4 rounded-b-md flex justify-between" >
+                        <h5 class="text-[#285a70]" >Xərc:</h5>
+                        <div id="expenseSeo">
+        
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold my-4">Veb sayt əlavələri</h3>
+                        <div class="bg-[#f8f8fa] lg:flex ">
+                            <div>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2 lg:min-w-[300px] ">
+                                    <h5 class="font-medium ">Ödəniş</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggleCom(this, 200)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Məhsullar</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggleCom(this, 300)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Filtr</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggleCom(this, 300)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                            </div>
+                            <div>                                
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2 ">
+                                    <h5 class="font-medium ">Səbət</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggleCom(this, 500)"  type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Bəyəndiklərim</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggleCom(this, 300)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                                <label  class="flex justify-between items-center space-x-4 cursor-pointer dark:text-gray-800 p-2">
+                                    <h5 class="font-medium ">Məhsul Haqqında</h5>
+                                    <span class="relative inline-block">
+                                        <input onchange="toggleCom(this, 200)" type="checkbox" class="hidden peer">
+                                        <div class="w-11 h-7 rounded-full shadow-inner dark:bg-[#e5e7eb] peer-checked:dark:bg-violet-600"></div>
+                                        <div class="absolute transition-transform duration-300 inset-y-0 left-0 w-5 h-5 m-1 rounded-full shadow peer-checked:transform peer-checked:translate-x-4 dark:bg-white"></div>
+                                    </span>
+                                </label>
+                            </div>    
+                        </div>
+                    </div>
+                    <div  class="bg-[#dee7f2] p-4 rounded-b-md flex justify-between" >
+                        <h5 class="text-[#285a70]" >Xərc:</h5>
+                        <div id="expenseCom">
+        
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold my-4">Logo Dizaynı</h3>
+                        <div>
+                            <div class="p-3 bg-[#f8f8fa]">
+                                <div class="flex  items-center px-4">
+                                    <fieldset class="space-y-1 w-full  mx-2">
+                                        <div class="flex justify-between  text-xs   gap-x-4 px-2">
+                                             <h5 class="  ">Ehtiyac yoxdur</h5>
+                                             <h5 class="mr-10 ">Sadə</h5>
+                                             <h5>Xüsusi</h5>
+                                        </div>
+                                        <input oninput="calc()" type="range" value="0" id="logodesign" class="w-full h-2 bg-[#e5e7eb] rounded-full appearance-none" min="0" max="2">
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="bg-[#dee7f2] p-4 rounded-b-md flex justify-between" >
+                        <h5 class="text-[#285a70]" >Cost:</h5>
+                        <div id="cost">
+        
+                        </div>
+                    </div>
+            </div>
+            <div class="bg-white  p-3 text-[#1c2434] mx-2  lg:w-4/12	 lg:sticky top-0 right-0 lg:h-fit z- ">
+                <h3 class="m-3 ">Təklifiniz</h3>
+                <section class="m-3 flex justify-between">
+                    <h5 class="text-[#8b8b9a]">Statik səhifələr:</h5>
+                    <span id="pageprice"></span>
+                </section>
+                <section class="m-3 flex justify-between">
+                    <h5 class="text-[#8b8b9a]">Əlavələr:</h5>
+                    <span id="funcprice"></span>
+                </section>
+                <section class="m-3 flex justify-between">
+                    <h5 class="text-[#8b8b9a]">SEO:</h5>
+                    <span id="seoprice"></span>
+                </section>
+                <section class="m-3 flex justify-between">
+                    <h5 class="text-[#8b8b9a]">E-ticarət:</h5>
+                    <span id="comprice"></span>
+                </section>
+                <section class="m-3 flex justify-between">
+                    <h5 class="text-[#8b8b9a]">Logo dizaynı:</h5>
+                    <span id="logoprice"></span>
+                </section>
+                <hr class="border-gray-200 w-9/10 mx-auto">
+                <section class="m-3 flex justify-between">
+                    <h5 class="text-[#8b8b9a] font-bold">Qeyd:</h5>
+                    <h3 class="text-[#8b8b9a] font-light">Minimum sayt qiyməti 450₼</h3>
+                </section>
+                <div  class="bg-[#a271f2] p-4 -b-md flex justify-between items-center" >
+                    <h1 class="text-white text-2xl	p-2" >Ümumi təxmini dəyəri:</h1>
+                    <span id="totalprice">
+                        
+                    </span>
+                </div>
+                <button onclick="popups()" class="text-center w-full bg-[#2bc48a] my-2 h-[50px] rounded text-white font-bold"><p>Saytınızı indi sifariş edin</p></button>
+            </div>
+        </div>        
+    </main>
+    <footer class="bg-[#faf4ff]">
+        <div class="mdl:flex w-4/5	m-auto justify-around">
+            <div>
+                <img class="p-4" src="saytaz.svg" alt="logo">
+                <p class="p-4 text-[#4a2182] mdl:w-[500px]">Sayt.az - Web saytların hazırlanması, Domain, Hosting satışı, SEO, SMM və texniki xidmətlər təklif edir.</p>
+        
+                <h3 class="text-[#4a2182] p-3">Bizi izləyin:</h3>
+                <ul class="text-[2em] text-[#a271f2] flex p-3 ">
+                    <li class="p-3"><i class="fa-brands fa-facebook"></i></li>
+                    <li class="p-3"><i class="fa-brands fa-instagram"></i></li>
+                    <li class="p-3"><i class="fa-brands fa-whatsapp"></i></li>
+                    <li class="p-3"><i class="fa-brands fa-linkedin"></i></li>
+                </ul>
+            </div>
+            <div class="mdl:flex">
+                <ul class="m-3">
+                    <h3 class="font-bold text-[1.4em] text-[#300b60] px-1">Hostinq & Domen</h3>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Domen</a></li>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Veb Hostinq</a></li>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Vps Hostinq</a></li>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Server</a></li>
+                </ul>
+                <ul class="m-3">
+                    <h3 class="font-bold text-[1.7em] text-[#300b60] px-1">Şirkət</h3>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Haqqımızda</a></li>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Əlaqə</a></li>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Bloq</a></li>
+                    <li class="text-[1.1em] font-semibold text-[#300b60] px-1 mdl:py-2"><a href="#">Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex flex-col text-[#300b60] mdl:flex-row w-4/5	m-auto justify-around	 ">
+            <span class="p-2"><i class="fa-solid fa-phone p-2"></i>+(99450) 123 - 44 - 55</span>
+            <span class="p-2"><i class="fa-regular fa-envelope p-2"></i>support@test.az</span>
+        </div>
+    </footer>
+    <div id="popup" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-20 hidden">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md mx-3 relative">
+                <i onclick="popups()" class="fa-solid fa-x absolute right-5"></i>
+                <h3>Veb sayt təklifi</h3>
+                <h3>Zəhmət olmasa əlaqə məlumatlarını təqdim edin</h3>
+                <input type="text" placeholder="Ad və Soyad" class="border-2 p-2 my-2 rounded w-full text-gray-600 ">
+                <div class="sm:flex sm:w-full justify-between ">
+                    <input type="text" placeholder="Telefon Nömrəsi" class="border-2 w-full sm:w-1/2 my-2 sm:my-0 mx-1 rounded p-2">
+                    <input type="email" placeholder="Elektron Poçt" class="border-2 w-full sm:w-1/2  mx-1 rounded p-2">
+                </div>
+                <div class="w-full my-2">
+                    <textarea class="border-2" placeholder="Qeyd.." class=" w-full"></textarea>
+                </div>
+                <div class="w-full ">
+                    <button class="bg-[#2bc48a] text-white p-2 text-center w-full rounded"><p> Müraciət Et</p></button>
+                </div>
+        </div>
+      </div>
+    <script src="app.js">
+    </script>
+</body>
+</html>
